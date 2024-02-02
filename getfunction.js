@@ -11,16 +11,52 @@ export let tableTemplate=`
 `
 
 export function responseData(results){
-    console.log(results);
-    results.forEach(isiRow);
+    // console.log(results.features);
+    // Addlayer()
+    results.features.forEach(isiRowPoint);
+    results.features.forEach(isiRowPolygon);
+    results.features.forEach(isiRowPolyline);
 }
 
-export function isiRow(value) {
-    let content = tableTemplate
-        .replace("#TYPE#", value.geometry.type)
-        .replace("#NAME#", value.properties.name)
-        .replace("#KORDINAT#", JSON.stringify(value.geometry.coordinates));
+export function isiRowPoint(value){
+    if (value.geometry.type === "Point") {
+    let content=tableTemplate.replace("#TYPE#",value.geometry.type).replace("#NAME#",value.properties.Name).replace("#KORDINAT#",value.geometry.coordinates);
     console.log(content);
-    addChild("lokasi", tableTag, tableRowClass, content);
+    addChild("lokasi",tableTag,tableRowClass,content);
+    }
 }
 
+export function isiRowPolygon(value){
+    if (value.geometry.type === "Polygon") {
+    let content=tableTemplate.replace("#TYPE#",value.geometry.type).replace("#NAME#",value.properties.Name).replace("#KORDINAT#",value.geometry.coordinates);
+    console.log(content);
+    addChild("polygon",tableTag,tableRowClass,content);
+    }
+}
+
+export function isiRowPolyline(value){
+    if (value.geometry.type === "LineString") {
+    let content=tableTemplate.replace("#TYPE#",value.geometry.type).replace("#NAME#",value.properties.Name).replace("#KORDINAT#",value.geometry.coordinates);
+    console.log(content);
+    addChild("line",tableTag,tableRowClass,content);
+    }
+}
+
+// export function Addlayer() {
+
+//     function showAlertOnEveryClick() {
+//         alert("IIIIHHH KAMU COPY PUNYA NYA ROFI YAAAAAA");
+//       }
+//     function getCurrentURL() {
+//         const currentURL = window.location.href;
+//         return currentURL;
+//       }
+      
+//       const currentURL = getCurrentURL();
+//       console.log(currentURL);
+//     const allowedDomain = ["https://github.com/Dzikri7/GIS-Baru"];
+  
+//     if (!currentURL.includes(allowedDomain)) {
+//         showAlertOnEveryClick();
+//     }
+//   }
