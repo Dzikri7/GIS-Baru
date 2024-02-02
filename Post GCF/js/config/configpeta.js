@@ -8,7 +8,7 @@ import {container} from 'https://jscroot.github.io/element/croot.js';
 
 const attributions = '<a href="https://petapedia.github.io/" target="_blank">&copy; PetaPedia Indonesia</a> ';
 
-const place = [107.66377010786778,-6.916740673178481];
+const place = [107.58032031133888, -6.878124785406527];
 
 export let idmarker = {id:1};
 

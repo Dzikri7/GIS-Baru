@@ -19,25 +19,25 @@ export function onDeleteMarkerClick() {
 }
 
 export function onSubmitMarkerClick() {
-    let long = getValue('long');
-    let lat = getValue('lat');
-    let name = getValue('name');
-    let volume = getValue('volume');
-    let type = getValue('type');
-      let data = {
-        "type" : type,
-        "name" : name,
-        "volume" : volume,
-        "coordinates" : [
-          parseFloat(long),parseFloat(lat)
-        ]
-      };
-      postWithToken(urlPostGCF,"Token","dsf9ygf87h98u479y98dj0fs89nfd7",data,afterSubmitCOG);
-    overlay.setPosition(undefined);
-    textBlur('popup-closer');
-      insertMarker(name,long,lat,volume);
-      idmarker.id=idmarker.id+1;
-    console.log(name)
+  let long = getValue('long');
+  let lat = getValue('lat');
+  let name = getValue('name');
+  let volume = getValue('volume');
+  let type = getValue('type');
+    let data = {
+      "type" : type,
+      "name" : name,
+      "volume" : volume,
+      "coordinates" : [
+        parseFloat(long),parseFloat(lat)
+      ]
+    };
+    postWithToken(urlPostGCF,"Token","dsf9ygf87h98u479y98dj0fs89nfd7",data,afterSubmitCOG);
+  overlay.setPosition(undefined);
+  textBlur('popup-closer');
+    insertMarker(name,long,lat,volume);
+    idmarker.id=idmarker.id+1;
+  console.log(name)
 
 }
 
@@ -97,7 +97,7 @@ export function onMapClick(evt) {
     }
   }
 
-export function GetLonLat(evt) {
+  export function GetLonLat(evt) {
     var point = map.getCoordinateFromPixel(evt.pixel);
     var lonLat = ol.proj.toLonLat(point); 
     console.log(lonLat);  // note the ordering of the numbers
