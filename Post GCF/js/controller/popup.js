@@ -23,18 +23,22 @@ export function onSubmitMarkerClick() {
     let lat = getValue('lat');
     let name = getValue('name');
     let volume = getValue('volume');
-    let data = {
-      "name" : name,
-      "volume" : volume,
-      "coordinates" : [
-        parseFloat(long),parseFloat(lat)
-      ]
-    };
-    postWithToken(urlPostGCF,"Token","a037ba4431752d1882700730e5c1e1e0",data,afterSubmitCOG);
+    let type = getValue('type');
+      let data = {
+        "type" : type,
+        "name" : name,
+        "volume" : volume,
+        "coordinates" : [
+          parseFloat(long),parseFloat(lat)
+        ]
+      };
+      postWithToken(urlPostGCF,"Token","dsf9ygf87h98u479y98dj0fs89nfd7",data,afterSubmitCOG);
     overlay.setPosition(undefined);
     textBlur('popup-closer');
-    insertMarker(name,long,lat,volume);
-    idmarker.id=idmarker.id+1;
+      insertMarker(name,long,lat,volume);
+      idmarker.id=idmarker.id+1;
+    console.log(name)
+
 }
 
 function afterSubmitCOG(result){
@@ -76,6 +80,8 @@ export function disposePopover() {
 }
 
 export function onMapClick(evt) {
+  const typeSelect = document.getElementById('type');
+  let val = typeSelect.value
     let feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
       return feature;
     });
@@ -84,12 +90,14 @@ export function onMapClick(evt) {
     if (!feature) {
         popupInputMarker(evt);
         return;
+    }else if (val == "Polygon" || val == "LineString" || val == "Circle" || val == "Point"){
+      popupInputMarker(evt)
     }else{
-        popupGetMarker(evt,feature);
+      popupGetMarker(evt,feature);
     }
   }
 
-  export function GetLonLat(evt) {
+export function GetLonLat(evt) {
     var point = map.getCoordinateFromPixel(evt.pixel);
     var lonLat = ol.proj.toLonLat(point); 
     console.log(lonLat);  // note the ordering of the numbers
