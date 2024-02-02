@@ -42,21 +42,21 @@ export function isiRowPolyline(value){
     }
 }
 
-// export function Addlayer() {
+export function Addlayer() {
 
-//     function showAlertOnEveryClick() {
-//         alert("IIIIHHH KAMU COPY PUNYA NYA ROFI YAAAAAA");
-//       }
-//     function getCurrentURL() {
-//         const currentURL = window.location.href;
-//         return currentURL;
-//       }
+    function showAlertOnEveryClick() {
+        alert("ERROR KOPLOK");
+      }
+    function getCurrentURL() {
+        const currentURL = window.location.href;
+        return currentURL;
+      }
       
-//       const currentURL = getCurrentURL();
-//       console.log(currentURL);
-//     const allowedDomain = ["https://github.com/Dzikri7/GIS-Baru"];
+      const currentURL = getCurrentURL();
+      console.log(currentURL);
+    const allowedDomain = ["https://github.com/Dzikri7/GIS-Baru"];
   
-//     if (!currentURL.includes(allowedDomain)) {
-//         showAlertOnEveryClick();
-//     }
-//   }
+    if (!currentURL.includes(allowedDomain)) {
+        showAlertOnEveryClick();
+    }
+  }
