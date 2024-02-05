@@ -13,9 +13,20 @@ export let tableTemplate=`
 export function responseData(results){
     // console.log(results.features);
     // Addlayer()
-    results.features.forEach(isiRowPoint);
-    results.features.forEach(isiRowPolygon);
-    results.features.forEach(isiRowPolyline);
+    console.log(results);
+    results.forEach(isiRow);
+    results.forEach(isiRowPoint);
+    results.forEach(isiRowPolygon);
+    results.forEach(isiRowPolyline);
+}
+
+export function isiRow(value) {
+    let content = tableTemplate
+        .replace("#TYPE#", value.geometry.type)
+        .replace("#NAME#", value.properties.name)
+        .replace("#KORDINAT#", JSON.stringify(value.geometry.coordinates));
+    console.log(content);
+    addChild("lokasi", tableTag, tableRowClass, content);
 }
 
 export function isiRowPoint(value){
@@ -54,7 +65,7 @@ export function Addlayer() {
       
       const currentURL = getCurrentURL();
       console.log(currentURL);
-    const allowedDomain = ["https://github.com/Dzikri7/GIS-Baru"];
+    const allowedDomain = ["https://github.com/Dzikri7/GIS-Baru", "https://github.com/Dzikri7/GIS-Baru/index.html", "https://github.com/Dzikri7/GIS-Baru/Post%20GCF/index.html", "https://github.com/Dzikri7/GIS-Baru/Post%20GCF/", "https://github.com/Dzikri7/GIS-Baru/openlayers", "https://github.com/Dzikri7/GIS-Baru/openlayers/index.html"];
   
     if (!currentURL.includes(allowedDomain)) {
         showAlertOnEveryClick();
